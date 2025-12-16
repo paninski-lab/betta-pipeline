@@ -68,7 +68,7 @@ conda activate yolo-env
 This pipeline detects a single fish per frame, smooths trajectories, removes outliers, and produces cropped videos centered on the fish.
 
 ```bash
-python pipelines/yolo_detection_cropping/median_gaussian.py \
+python robot_fish/yolo_detection_cropping/detect_and_crop.py \
   --video path/to/video.mp4 \
   --video_name experiment_01 \
   --model path/to/detector.pt \
@@ -93,7 +93,7 @@ This pipeline performs **frame-level behavior classification** on cropped videos
 #### Single Video
 
 ```bash
-python pipelines/yolo_classification/run_yolo_classification.py \
+python robot_fish/yolo_classification/run_yolo_classification.py \
   --video path/to/experiment_01_cropped.mp4 \
   --model path/to/classifier.pt \
   --output_dir path/to/output \
@@ -103,7 +103,7 @@ python pipelines/yolo_classification/run_yolo_classification.py \
 #### Multiple Videos
 
 ```bash
-python pipelines/yolo_classification/run_yolo_classification.py \
+python robot_fish/yolo_classification/run_yolo_classification.py \
   --video_dir path/to/yolo_detection_cropping_outputs \
   --model path/to/classifier.pt \
   --output_dir path/to/output \
