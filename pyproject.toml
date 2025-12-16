@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "betta-pipeline"
+version = "0.1.0"
+description = "Betta fish pose estimation pipeline"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  # Core numerical & data
+  "numpy>=1.26",
+  "pandas>=2.0",
+
+  # Scientific computing & stats
+  "scipy>=1.10",
+  "statsmodels>=0.14",
+
+  # Computer vision & I/O
+  "opencv-python-headless>=4.9",
+  "tables>=3.9",              # PyTables for HDF5
+
+  # Plotting
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
+
+  # Utilities
+  "tqdm>=4.66",
+  "omegaconf>=2.3",
+
+  # Deep learning
+  "torch",
+  "pytorch-lightning>=2.5,<2.6",
+
+  # Pose estimation
+  "lightning-pose",
+  "lightning-action==0.2.4"
+]
+
+[project.scripts]
+betta = "real_fish_preprocess.cli:main"
