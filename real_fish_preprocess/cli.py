@@ -2,7 +2,7 @@ import argparse
 import glob
 import os
 
-from real_fish_preprocess.train import lp_train
+from real_fish_preprocess.pose_predict import lp_predict
 from real_fish_preprocess.feature_generation import feature_generation
 
 
@@ -68,8 +68,8 @@ def main():
     # -------------------------------------------------
     # Dispatch
     # -------------------------------------------------
-    if args.command == "train":
-        lp_train(
+    if args.command == "pose_predict":
+        lp_predict(
             video_folder=args.video_folder,
             output_folder=args.output_folder,
             cfg_file=args.cfg_file,

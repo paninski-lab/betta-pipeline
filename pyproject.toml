@@ -35,9 +35,8 @@ dependencies = [
 
   # Pose estimation
   "lightning-pose",
-  "lightning-action @ git+https://github.com/paninski-lab/lightning-action.git"
+  "lightning-action==0.2.4"
 ]
 
 [project.scripts]
-betta-train = "real_fish_preprocess.cli:main"
 betta = "real_fish_preprocess.cli:main"

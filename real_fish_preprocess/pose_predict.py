@@ -1,4 +1,4 @@
-def lp_train(video_folder, output_folder, cfg_file, ckpt_file):
+def lp_predict(video_folder, output_folder, cfg_file, ckpt_file):
     import torch
     import omegaconf
     from omegaconf import dictconfig
