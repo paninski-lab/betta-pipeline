@@ -82,22 +82,25 @@ The script will recursively search for all files matching:
 
 ## Using Ground Truth Labels (Optional)
 
-If manually annotated labels are available, they can be used to evaluate classification performance.
+Manually annotated labels are optional and are **not included** in this repository.
 
-Expected label naming:
+If you want to evaluate classification performance, you must point the pipeline to the directory
+where the label CSV files are stored.
+
+Expected label naming convention:
 
 manual_scoring_<video_name>.csv
 
-Example:
+Example directory structure:
 
-labels/
+/path/to/labels/
 └── manual_scoring_3558_robot.csv
 
 Run with labels:
 
 python pipelines/yolo_classification/run_yolo_classification.py \
   --video outputs/yolo_detection_cropping/3558_robot/videos/3558_robot_cropped.mp4 \
-  --label_dir labels \
+  --label_dir /path/to/labels \
   --model /path/to/classifier_model.pt \
   --output_dir outputs/yolo_classification \
   --device cuda
