@@ -1,4 +1,4 @@
-# Betta Fish Pipelines
+# Robot Fish Pipelines
 
 This repository contains end-to-end pipelines for detecting, tracking, and classifying fish behavior in video data.
 
