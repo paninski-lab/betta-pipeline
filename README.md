@@ -5,7 +5,7 @@ This repository contains end-to-end pipelines for detecting, tracking, and class
 ---
 
 ## Repository Structure
-
+```
 betta-pipeline/
 ├── pipelines/
 │   ├── yolo_detection_cropping/
@@ -16,7 +16,7 @@ betta-pipeline/
 ├── environment_yolo.yml   # Conda environment for YOLO pipelines
 ├── requirements.txt       # Python dependencies
 └── README.md
-
+```
 ---
 
 ## Environment Setup (YOLO Pipelines)
@@ -48,14 +48,14 @@ All pipelines write their outputs (videos, CSVs, plots) to the `outputs/` direct
 Because outputs can be very large (especially videos), this directory is ignored by git and should never be committed.
 
 Typical structure:
-
+```
 outputs/
 ├── yolo_detection_cropping/
 │   └── 3558_robot/
 │       ├── videos/
 │       ├── csv/
 │       └── plots/
-
+```
 Outputs are generated locally or on Lightning.ai, but not tracked by version control.
 
 ---
