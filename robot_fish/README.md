@@ -63,6 +63,6 @@ This pipeline:
 - Produces cropped videos centered on the fish
 
 See:
-pipelines/yolo_detection_cropping/README.md
+robot_fish/yolo_detection_cropping/README.md
 
 ---
