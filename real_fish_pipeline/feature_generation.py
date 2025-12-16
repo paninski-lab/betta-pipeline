@@ -1,4 +1,4 @@
-from betta_pipeline import helper_functions_VA
+
 import numpy as np        # for array math and trigonometric functions
 import pandas as pd       # if data_auto is a DataFrame
 import glob

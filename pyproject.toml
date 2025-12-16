@@ -8,33 +8,36 @@ version = "0.1.0"
 description = "Betta fish pose estimation pipeline"
 readme = "README.md"
 requires-python = ">=3.9"
-
 dependencies = [
-    # Core
-    "numpy",
-    "pandas",
+  # Core numerical & data
+  "numpy>=1.26",
+  "pandas>=2.0",
 
-    # Scientific computing
-    "scipy",
-    "statsmodels",
+  # Scientific computing & stats
+  "scipy>=1.10",
+  "statsmodels>=0.14",
 
-    # Computer vision
-    "opencv-python-headless",
+  # Computer vision & I/O
+  "opencv-python-headless>=4.9",
+  "tables>=3.9",              # PyTables for HDF5
 
-    # Plotting
-    "matplotlib",
-    "seaborn",
+  # Plotting
+  "matplotlib>=3.8",
+  "seaborn>=0.13",
 
-    # Progress bars
-    "tqdm",
+  # Utilities
+  "tqdm>=4.66",
+  "omegaconf>=2.3",
 
-    # Lightning Pose runtime deps (non-DALI)
-    "torch",
-    "omegaconf",
-    "tables",
-    "lightning-pose"
+  # Deep learning
+  "torch",
+  "pytorch-lightning>=2.5,<2.6",
+
+  # Pose estimation
+  "lightning-pose",
+  "lightning-action @ git+https://github.com/paninski-lab/lightning-action.git"
 ]
 
 [project.scripts]
-betta-train = "betta_pipeline.cli:main"
-betta = "betta_pipeline.cli:main"
+betta-train = "real_fish_pipeline.cli:main"
+betta = "real_fish_pipeline.cli:main"

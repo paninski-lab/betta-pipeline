@@ -2,8 +2,8 @@ import argparse
 import glob
 import os
 
-from betta_pipeline.train import lp_train
-from betta_pipeline.feature_generation import feature_generation
+from real_fish_pipeline.train import lp_train
+from real_fish_pipeline.feature_generation import feature_generation
 
 
 def main():
