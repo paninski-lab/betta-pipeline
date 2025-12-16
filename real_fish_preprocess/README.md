@@ -19,8 +19,9 @@ pip install -e .
 betta
 
 ## To run inference
-betta train
-
+```bash
+betta pose_predict
+```
 **Input**
 
 Directory containing .mp4 video files
@@ -30,11 +31,13 @@ Directory containing .mp4 video files
 Directory containing pose prediction CSV files
 
 **Command** 
+```bash
 betta train --video-folder <VIDEO_FOLDER> --output-folder <OUTPUT_FOLDER> --cfg-file <CONFIG_YAML> --ckpt-file <CHECKPOINT_CKPT>
-
+```
 **Example**
+```bash
 betta train --video-folder ./videos --output-folder ./pose_outputs --cfg-file ./configs/betta.yaml --ckpt-file ./checkpoints/betta.ckpt
-
+```
 ## To run feature generation
 betta feature-generation
 **Input**
@@ -50,9 +53,10 @@ OR DeepLabCut HDF5 files (.h5)
 Directory containing generated feature CSV files
 
 **Command**
-
+```bash
 betta feature-generation --input <POSE_OUTPUT_FOLDER> --output <FEATURE_OUTPUT_FOLDER>
-
+```
 **Example**
-
+```bash
 betta feature-generation --input ./pose_outputs --output ./action_features
+```

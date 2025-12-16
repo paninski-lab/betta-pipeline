@@ -1,0 +1,11 @@
+numpy
+pandas
+scipy
+statsmodels
+opencv-python-headless
+matplotlib
+seaborn
+tqdm
+torch
+omegaconf
+tables

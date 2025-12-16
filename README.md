@@ -17,7 +17,17 @@ This README provides a **repo-wide entry point** summarizing installation and ex
 
 ### Real Fish Environment
 
-> *To be completed by the real-fish pipeline team.*
+Make sure you are running in a Linux or Windows WSL environment
+
+1. **Create or update the Conda environment**
+```bash
+conda create -n betta python=3.10
+conda activate betta
+```
+2. **Install dependencies**
+```bash
+pip install -e .
+```
 
 ---
 
@@ -41,11 +51,56 @@ No editable install step is required for robot fish pipelines.
 
 ## Real Fish Pipeline
 
-> *To be completed by the real-fish pipeline team.*
+To run pose estimation, just run following commands after installation
 
 ### Pose Estimation and Feature Extraction
 
-> *To be completed.*
+## Comamnd-line Interface
+```bash
+betta
+```
+## To run inference
+```bash
+betta pose_predict
+```
+**Input**
+
+Directory containing .mp4 video files
+
+**Output**
+
+Directory containing pose prediction CSV files
+
+**Command** 
+```bash
+betta train --video-folder <VIDEO_FOLDER> --output-folder <OUTPUT_FOLDER> --cfg-file <CONFIG_YAML> --ckpt-file <CHECKPOINT_CKPT>
+```
+**Example**
+```bash
+betta train --video-folder ./videos --output-folder ./pose_outputs --cfg-file ./configs/betta.yaml --ckpt-file ./checkpoints/betta.ckpt
+```
+## To run feature generation
+betta feature-generation
+**Input**
+
+Directory containing:
+
+Lightning Pose CSV files (.csv)
+
+OR DeepLabCut HDF5 files (.h5)
+
+**Output**
+
+Directory containing generated feature CSV files
+
+**Command**
+```bash
+betta feature-generation --input <POSE_OUTPUT_FOLDER> --output <FEATURE_OUTPUT_FOLDER>
+```
+**Example**
+```bash
+betta feature-generation --input ./pose_outputs --output ./action_features
+```
 
 ### LITAction (Aggregate Model)
 

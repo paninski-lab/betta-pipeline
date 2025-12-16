@@ -1,0 +1,3 @@
+[console_scripts]
+betta = real_fish_pipeline.cli:main
+betta-train = real_fish_pipeline.cli:main
