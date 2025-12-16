@@ -29,13 +29,13 @@ It assumes the input videos already contain a single fish centered in the frame.
 This pipeline is intended to be run on the output of the YOLO detection and cropping pipeline.
 
 If the detection pipeline was run as:
-
-python median_gaussian.py \
+```
+python detect_and_crop.py \
   --video path/to/video.mp4 \
   --video_name experiment_01 \
   --model detector.pt \
   --output outputs/yolo_detection_cropping
-
+```
 Then the classification pipeline expects as input:
 
 outputs/yolo_detection_cropping/experiment_01/videos/experiment_01_cropped.mp4
@@ -47,33 +47,33 @@ outputs/yolo_detection_cropping/experiment_01/videos/experiment_01_cropped.mp4
 This pipeline expects the YOLO Conda environment defined in the repository root.
 
 From the repository root:
-
+```
 conda activate yolo-env
-
+```
 ---
 
 ## Basic Usage (Single Video)
 
 To classify a single cropped video:
-
-python pipelines/yolo_classification/run_yolo_classification.py \
+```
+python robot_fish/yolo_classification/run_yolo_classification.py \
   --video outputs/yolo_detection_cropping/experiment_01/videos/experiment_01_cropped.mp4 \
   --model /path/to/classifier_model.pt \
   --output_dir outputs/yolo_classification \
   --device cuda
-
+```
 ---
 
 ## Running on Multiple Videos
 
 To classify all cropped videos produced by the detection pipeline:
-
-python pipelines/yolo_classification/run_yolo_classification.py \
+```
+python robot_fish/yolo_classification/run_yolo_classification.py \
   --video_dir outputs/yolo_detection_cropping \
   --model /path/to/classifier_model.pt \
   --output_dir outputs/yolo_classification \
   --device cuda
-
+```
 The script will recursively search for all files matching:
 
 *_cropped.mp4
@@ -92,19 +92,19 @@ Expected label naming convention:
 manual_scoring_<video_name>.csv
 
 Example directory structure:
-
+```
 /path/to/labels/
 └── manual_scoring_3558_robot.csv
-
+```
 Run with labels:
-
-python pipelines/yolo_classification/run_yolo_classification.py \
+```
+python robot_fish/yolo_classification/run_yolo_classification.py \
   --video outputs/yolo_detection_cropping/3558_robot/videos/3558_robot_cropped.mp4 \
   --label_dir /path/to/labels \
   --model /path/to/classifier_model.pt \
   --output_dir outputs/yolo_classification \
   --device cuda
-
+```
 When labels are provided, the pipeline will compute:
 - Per-video class rates
 - Global classification report
