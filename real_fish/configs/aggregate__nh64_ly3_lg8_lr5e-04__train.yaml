@@ -1,0 +1,87 @@
+data:
+  data_path: hyperparameter_sweep/binary_data/aggregate/LP_with_cal_contour
+  input_dir: features
+  transforms: [ZScore]
+  expt_ids:
+    - fighting__1.1.28R
+    - fighting__1.1.28L
+    - fighting__1.2.2R
+    - fighting__1.2.28R
+    - fighting__1.3.1R
+    - fighting__1.4.1R
+    - fighting__2.1.28L
+    - fighting__3.1.28L
+    - fighting__3.2.28L
+    - hybrid__RHT3.3.1R
+    - hybrid__RHT4.3.1L
+    - hybrid__RHT5.10.1R
+    - hybrid__RHT6.2.2L
+    - hybrid__RHT2.3.1L
+    - hybrid__RHT9.8.1R
+    - hybrid__wxf1.2.2R
+    - hybrid__wxf1.3.1L
+    - hybrid__wxf1.5.1R
+    - hybrid__wxf2.10.1R
+    - hybrid__wxf3.3.1R
+    - hybrid__wxf4.3.1L
+    - hybrid__wxf5180R
+    - hybrid__wxf5239R
+    - hybrid__wxf5272L
+    - ornamental__1.9.1R
+    - ornamental__2.7.1R
+    - ornamental__2.7.2R
+    - ornamental__2.9.1R
+    - ornamental__3.7.1R
+    - ornamental__3.7.2R
+    - ornamental__3.8.1R
+    - ornamental__3.9.1R
+    - ornamental__3.9.2R
+    - ornamental__5.10.1R
+    - ornamental__5.9.1R
+    - ornamental__6.10.1R
+    - ornamental__6.5.2R
+    - ornamental__6.7.2R
+    - ornamental__6.8.2R
+    - ornamental__6.9.1R
+    - ornamental__6.9.2R
+    - wild__1.10.1R
+    - wild__1.9.2R
+    - wild__1381.1
+    - wild__1384.2
+    - wild__1434.1
+    - wild__1434.2
+    - wild__1436.1
+    - wild__1436.2
+    - wild__1437.1
+    - wild__1437.2
+    - wild__1438.1
+    - wild__1508.1
+    - wild__2.6.1R
+    - wild__3.5.1R
+  seed: 43
+  ignore_index: -100
+  weight_classes: true
+  label_names: [background, flare]
+model:
+  backbone: dtcn
+  input_size: 18
+  output_size: 2
+  num_hid_units: 64
+  num_layers: 3
+  num_lags: 8
+  seed: 43
+optimizer:
+  type: Adam
+  lr: 0.0005
+  wd: 0
+  scheduler: null
+training:
+  device: gpu
+  num_epochs: 400
+  batch_size: 16
+  num_workers: 4
+  sequence_length: 1000
+  train_probability: 0.95
+  val_probability: 0.05
+
+

@@ -1,0 +1,41 @@
+data:
+  data_path: hyperparameter_sweep/binary_data/fighting/LP_with_cal_contour
+  input_dir: features
+  transforms: [ZScore]
+  expt_ids:
+    - 1.1.28R
+    - 1.1.28L
+    - 1.2.2R
+    - 1.2.28R
+    - 1.3.1R
+    - 1.4.1R
+    - 2.1.28L
+    - 3.1.28L
+    - 3.2.28L
+  seed: 43
+  ignore_index: -100
+  weight_classes: true
+  label_names: [background, flare]
+model:
+  backbone: dtcn
+  input_size: 18
+  output_size: 2
+  num_hid_units: 64
+  num_layers: 3
+  num_lags: 8
+  seed: 43
+optimizer:
+  type: Adam
+  lr: 0.0005
+  wd: 0
+  scheduler: null
+training:
+  device: gpu
+  num_epochs: 400
+  batch_size: 16
+  num_workers: 4
+  sequence_length: 1000
+  train_probability: 0.95
+  val_probability: 0.05
+
+
