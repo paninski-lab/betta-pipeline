@@ -29,9 +29,9 @@ This pipeline implements an automated fish tracking system designed to:
 This pipeline expects the YOLO Conda environment defined in the repository root.
 
 From the repository root:
-
+```
 conda activate yolo-env
-
+```
 ---
 
 ## Usage
