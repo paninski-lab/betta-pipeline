@@ -1,22 +1,25 @@
 data:
-  data_path: Week 14/hyperparameter_sweep/binary_data/wild/LP_with_cal_contour
+  data_path: hyperparameter_sweep/binary_data/ornamental/LP_with_cal_contour
   input_dir: features
   transforms: [ZScore]
   expt_ids:
-    - 1.10.1R
-    - 1.9.2R
-    - 1381.1
-    - 1384.2
-    - 1434.1
-    - 1434.2
-    - 1436.1
-    - 1436.2
-    - 1437.1
-    - 1437.2
-    - 1438.1
-    - 1508.1
-    - 2.6.1R
-    - 3.5.1R
+    - 1.9.1R
+    - 2.7.1R
+    - 2.7.2R
+    - 2.9.1R
+    - 3.7.1R
+    - 3.7.2R
+    - 3.8.1R
+    - 3.9.1R
+    - 3.9.2R
+    - 5.10.1R
+    - 5.9.1R
+    - 6.10.1R
+    - 6.5.2R
+    - 6.7.2R
+    - 6.8.2R
+    - 6.9.1R
+    - 6.9.2R
   seed: 43
   ignore_index: -100
   weight_classes: true
@@ -25,9 +28,9 @@ model:
   backbone: dtcn
   input_size: 18
   output_size: 2
-  num_hid_units: 64
-  num_layers: 2
-  num_lags: 8
+  num_hid_units: 32
+  num_layers: 3
+  num_lags: 4
   seed: 43
 optimizer:
   type: Adam

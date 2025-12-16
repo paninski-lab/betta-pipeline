@@ -1,8 +1,0 @@
-{
-  "hparam_key": "nh64_ly3_lg8_lr5e-04",
-  "variant": "LP_with_cal_contour",
-  "train_split": "all (train+test+val)",
-  "data_path": "c:\\Columbia Capstone\\Week 14\\hyperparameter_sweep\\binary_data\\aggregate\\LP_with_cal_contour",
-  "model_dir": "c:\\Columbia Capstone\\Week 14\\hyperparameter_sweep\\models\\aggregate\\nh64_ly3_lg8_lr5e-04__all_data_final",
-  "deliverables_copy": "c:\\Columbia Capstone\\Week 14\\deliverables\\models\\aggregate_all_data\\nh64_ly3_lg8_lr5e-04"
-}

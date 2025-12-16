@@ -1,26 +1,27 @@
 ## Training (Lightning-Action · Real Fish)
 
 This folder contains **reproducible training scripts** for:
+
 - subtype-specific binary models (flare vs background)
 - aggregate binary model (trained on all subtypes)
 
-These scripts are aligned with the Week 14 sweep folder structure:
+These scripts assume the sweep artifacts are available under:
 
-- Data: `Week 14/hyperparameter_sweep/binary_data/<subtype>/<variant>/`
-- Models: `Week 14/hyperparameter_sweep/models/<subtype>/`
-- Results: `Week 14/hyperparameter_sweep/results/*.json`
+- `hyperparameter_sweep/binary_data/<subtype>/<variant>/`
+- `hyperparameter_sweep/models/<subtype>/`
+- `hyperparameter_sweep/results/*.json`
 
 ### Setup
 
-- Run commands from the **repository root** (the folder that contains `Week 14/`).
-- The scripts auto-detect the repo root by locating `Week 14/hyperparameter_sweep/`.
+- Run commands from the **repository root** (the folder that contains `real_fish/`).
+- Download the Drive folder and place it at `hyperparameter_sweep/` in the repo root.
 
 ### Subtype-specific training
 
 Train the best model for a subtype (according to `<subtype>_results.json`):
 
 ```bash
-py -3 "Week 14/deliverables/training/train_subtype_models.py" ^
+py -3 "real_fish/training/train_subtype_models.py" ^
   --subtype fighting ^
   --variant LP_with_cal_contour ^
   --use_best_from_results ^
@@ -30,7 +31,7 @@ py -3 "Week 14/deliverables/training/train_subtype_models.py" ^
 Train the same best hyperparams but on **all** data (train+test+val):
 
 ```bash
-py -3 "Week 14/deliverables/training/train_subtype_models.py" ^
+py -3 "real_fish/training/train_subtype_models.py" ^
   --subtype fighting ^
   --variant LP_with_cal_contour ^
   --use_best_from_results ^
@@ -40,7 +41,7 @@ py -3 "Week 14/deliverables/training/train_subtype_models.py" ^
 Write `config.yaml` with a **relative** `data_path` (recommended for portability):
 
 ```bash
-py -3 "Week 14/deliverables/training/train_subtype_models.py" ^
+py -3 "real_fish/training/train_subtype_models.py" ^
   --subtype fighting ^
   --variant LP_with_cal_contour ^
   --use_best_from_results ^
@@ -53,7 +54,7 @@ py -3 "Week 14/deliverables/training/train_subtype_models.py" ^
 Train **one single aggregate model** selected by **mean F1 across fish types** (evenly weighted):
 
 ```bash
-py -3 "Week 14/deliverables/training/train_aggregate_models.py" ^
+py -3 "real_fish/training/train_aggregate_models.py" ^
   --variant LP_with_cal_contour ^
   --use_best_global_from_results ^
   --split train
@@ -62,7 +63,7 @@ py -3 "Week 14/deliverables/training/train_aggregate_models.py" ^
 Train that single aggregate model on **all** data:
 
 ```bash
-py -3 "Week 14/deliverables/training/train_aggregate_models.py" ^
+py -3 "real_fish/training/train_aggregate_models.py" ^
   --variant LP_with_cal_contour ^
   --use_best_global_from_results ^
   --split all
@@ -72,5 +73,3 @@ py -3 "Week 14/deliverables/training/train_aggregate_models.py" ^
 
 - `--post_inference` can be enabled to run automatic inference over training sessions after training completes.
 - Ornamental aliases (`2.7.1oR`, `3.5.1oR`) are automatically normalized for training.
-
-

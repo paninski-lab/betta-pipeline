@@ -1,5 +1,5 @@
 data:
-  data_path: Week 14/hyperparameter_sweep/binary_data/aggregate/LP_with_cal_contour
+  data_path: hyperparameter_sweep/binary_data/aggregate/LP_with_cal_contour
   input_dir: features
   transforms: [ZScore]
   expt_ids:

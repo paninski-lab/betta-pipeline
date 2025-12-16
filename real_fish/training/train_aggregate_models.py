@@ -38,17 +38,42 @@ def load_best_key_global(results_file: Path, subtypes: list[str]) -> str:
 
 
 def find_repo_root(start: Path | None = None) -> Path:
-    """Find repository root by locating 'Week 14/hyperparameter_sweep'."""
-    candidates = []
+    """Find repository root.
+
+    Prefers the git root if available; otherwise searches upward for a folder named
+    'hyperparameter_sweep' or 'real_fish'.
+    """
+    import subprocess
+
+    candidates: list[Path] = []
     if start is not None:
         candidates.append(start)
     candidates.append(Path.cwd())
     candidates.append(Path(__file__).resolve())
+
+    # 1) git root (best effort)
+    try:
+        r = subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"],
+            cwd=str(candidates[0].resolve()),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if r.returncode == 0:
+            gp = Path(r.stdout.strip())
+            if gp.exists():
+                return gp.resolve()
+    except Exception:
+        pass
+
+    # 2) search for marker folders
     for base in candidates:
         base = base.resolve()
-        for p in [base] + list(base.parents):
-            if (p / "Week 14" / "hyperparameter_sweep").exists():
-                return p
+        for q in [base] + list(base.parents):
+            if (q / "hyperparameter_sweep").exists() or (q / "real_fish").exists():
+                return q
+
     return Path.cwd().resolve()
 
 
@@ -58,7 +83,7 @@ def main() -> None:
         "--project_root",
         type=Path,
         default=None,
-        help="Repo root (auto-detected if omitted). Should contain 'Week 14/hyperparameter_sweep/'.",
+        help="Repo root (auto-detected if omitted). Should contain 'hyperparameter_sweep/'.",
     )
     parser.add_argument("--variant", type=str, default="LP_with_cal_contour")
     parser.add_argument("--split", type=str, default="train", choices=["train", "all"])
@@ -80,8 +105,7 @@ def main() -> None:
     args = parser.parse_args()
 
     project_root = (args.project_root or find_repo_root()).resolve()
-    week14_root = project_root / "Week 14"
-    sweep_root = week14_root / "hyperparameter_sweep"
+    sweep_root = project_root / "hyperparameter_sweep"
 
     data_path = sweep_root / "binary_data" / "aggregate" / args.variant
     splits_file = data_path / "splits.yaml"
