@@ -1,0 +1,49 @@
+data:
+  data_path: hyperparameter_sweep/binary_data/ornamental/LP_with_cal_contour
+  input_dir: features
+  transforms: [ZScore]
+  expt_ids:
+    - 1.9.1R
+    - 2.7.1R
+    - 2.7.2R
+    - 2.9.1R
+    - 3.7.1R
+    - 3.7.2R
+    - 3.8.1R
+    - 3.9.1R
+    - 3.9.2R
+    - 5.10.1R
+    - 5.9.1R
+    - 6.10.1R
+    - 6.5.2R
+    - 6.7.2R
+    - 6.8.2R
+    - 6.9.1R
+    - 6.9.2R
+  seed: 43
+  ignore_index: -100
+  weight_classes: true
+  label_names: [background, flare]
+model:
+  backbone: dtcn
+  input_size: 18
+  output_size: 2
+  num_hid_units: 32
+  num_layers: 3
+  num_lags: 4
+  seed: 43
+optimizer:
+  type: Adam
+  lr: 0.0001
+  wd: 0
+  scheduler: null
+training:
+  device: gpu
+  num_epochs: 400
+  batch_size: 16
+  num_workers: 4
+  sequence_length: 1000
+  train_probability: 0.95
+  val_probability: 0.05
+
+
