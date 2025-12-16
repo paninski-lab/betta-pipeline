@@ -39,7 +39,7 @@ conda activate yolo-env
 ### Basic Command
 
 ```bash
-python median_gaussian.py \
+python detect_and_crop.py \
     --video path/to/video.mp4 \
     --video_name experiment_01 \
     --model path/to/model.pt \
@@ -49,7 +49,7 @@ python median_gaussian.py \
 ### Full Command with All Parameters
 
 ```bash
-python median_gaussian.py \
+python detect_and_crop.py \
     --video data/videos/tank_recording.mp4 \
     --video_name tank_01_trial_1 \
     --model models/fish_detector.pt \
