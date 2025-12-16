@@ -1,6 +1,6 @@
-# Real Fish Pipeline
+# Real Fish Preprocess
 
-**Real Fish Pipeline** is a command-line toolkit for extracting behavioral features from betta fish videos.  
+**Real Fish Preprocess** is a command-line toolkit for extracting behavioral features from betta fish videos.  
 It provides a two-stage workflow:
 
 1. **Pose inference** using pretrained **Lightning Pose** models  

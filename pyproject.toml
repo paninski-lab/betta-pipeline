@@ -39,5 +39,5 @@ dependencies = [
 ]
 
 [project.scripts]
-betta-train = "real_fish_pipeline.cli:main"
-betta = "real_fish_pipeline.cli:main"
+betta-train = "real_fish_preprocess.cli:main"
+betta = "real_fish_preprocess.cli:main"
