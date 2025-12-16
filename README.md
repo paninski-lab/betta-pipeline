@@ -23,17 +23,13 @@ betta-pipeline/
 
 All YOLO-based pipelines (detection, cropping, classification) are expected to run in the same Conda environment.
 
-## Environment Setup (YOLO Pipelines)
-
-All YOLO-based pipelines (detection, cropping, classification) are expected to run in the same Conda environment.
-
 ### Create or update the environment
 
 From the repository root:
-
+```
 conda env update --file environment_yolo.yml
 conda activate yolo-env
-
+```
 Notes:
 - If the environment does not exist, this command will create it.
 - If the environment already exists, it will be updated to match the configuration file.
