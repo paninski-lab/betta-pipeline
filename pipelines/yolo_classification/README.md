@@ -142,21 +142,18 @@ Recompute predictions even if cached CSVs already exist.
 
 ## Outputs
 
-All outputs are written inside the directory specified by --output_dir.
+All outputs are written to the directory specified via the `--output_dir` argument.
 
-outputs/yolo_classification/
-├── predictions/
-│   ├── predictions_<video_name>.csv
-├── summary/
-│   ├── per_video_rates.csv
-│   ├── classification_report.txt
-│   ├── confusion_matrix.csv
-│   └── run_metadata.json
+The pipeline does not enforce a fixed output location. You are free to choose any
+directory structure that fits your workflow.
 
-Prediction CSV files contain:
-- frame index
-- predicted class
-- per-class probabilities for each frame
+Typical outputs include:
+- Per-frame prediction CSVs
+- Optional evaluation summaries (when labels are provided)
+- Run metadata for reproducibility
+
+Because outputs may include large files (especially CSVs and videos),
+they are not intended to be tracked by git.
 
 ---
 

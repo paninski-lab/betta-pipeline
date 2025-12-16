@@ -39,20 +39,16 @@ Notes:
 
 ## Outputs and Version Control
 
-All pipelines write their outputs (videos, CSVs, plots) to the `outputs/` directory.
+All pipelines write their outputs (videos, CSVs, plots) to a user-specified directory.
 
-Because outputs can be very large (especially videos), this directory is ignored by git and should never be committed.
+Each pipeline exposes an `--output` or `--output_dir` argument that allows you to choose
+where results are saved. There is no fixed output directory enforced by this repository.
 
-Typical structure:
-```
-outputs/
-├── yolo_detection_cropping/
-│   └── 3558_robot/
-│       ├── videos/
-│       ├── csv/
-│       └── plots/
-```
-Outputs are generated locally or on Lightning.ai, but not tracked by version control.
+Because outputs can be very large (especially videos), output directories should not be
+tracked by version control and should remain outside the repository or be explicitly ignored.
+
+Output locations are entirely flexible and can be adapted to local machines, shared
+filesystems, or cloud-based environments.
 
 ---
 
@@ -70,4 +66,3 @@ See:
 pipelines/yolo_detection_cropping/README.md
 
 ---
-
