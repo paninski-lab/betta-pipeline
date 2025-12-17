@@ -17,7 +17,22 @@ This README provides a **repo-wide entry point** summarizing installation and ex
 
 ### Real Fish Environment
 
-> *To be completed by the real-fish pipeline team.*
+All real fish pipelines use a shared Conda environment and are installed from this repository via an **editable install**.
+
+1. **Create the Conda environment**
+
+  ```bash
+  conda create -n betta-real python=3.10 -y
+  conda activate betta-real
+  ```
+
+2. **Install this repo (editable)**
+
+Run from the repository root (the folder that contains `pyproject.toml`):
+
+  ```bash
+  pip install -e .
+  ```
 
 ---
 
@@ -41,7 +56,11 @@ No editable install step is required for robot fish pipelines.
 
 ## Real Fish Pipeline
 
-> *To be completed by the real-fish pipeline team.*
+> Reminder: Activate the **real fish Conda environment** before running any real fish pipeline.
+>
+  ```bash
+  conda activate betta-real
+  ```
 
 ### Pose Estimation and Feature Extraction
 
@@ -49,7 +68,46 @@ No editable install step is required for robot fish pipelines.
 
 ### LITAction (Aggregate Model)
 
-> *To be completed.*
+This repository includes packaged Lightning Action pipelines under `real_fish/`:
+
+- Inference: `real_fish/inference/`
+- Training: `real_fish/training/`
+- Reference configs: `real_fish/configs/`
+
+#### Inference (CLI)
+Run inference with the Lightning Action CLI:
+
+  ```bash
+  litaction predict --model-dir path/to/trained_model_dir --data-dir path/to/data --input-dir features --output-dir predictions/
+  ```
+
+#### Inference (batch evaluation)
+Run inference on many sessions at once using the provided script:
+
+  ```bash
+  py -3 "real_fish/inference/run_lightning_action_inference.py" ^
+    --model_kind aggregate_single ^
+    --target_subtype wild ^
+    --variant LP_with_cal_contour ^
+    --split test
+  ```
+
+See `real_fish/inference/README.md` for additional options (explicit session lists, custom data paths, subtype models).
+
+#### Training
+Train subtype-specific models:
+
+  ```bash
+  py -3 "real_fish/training/train_subtype_models.py" --help
+  ```
+
+Train aggregate models:
+
+  ```bash
+  py -3 "real_fish/training/train_aggregate_models.py" --help
+  ```
+
+See `real_fish/training/README.md` for detailed training instructions and config conventions.
 
 ---
 
