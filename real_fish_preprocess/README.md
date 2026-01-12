@@ -12,7 +12,19 @@ The pipeline is designed for **inference-only usage**, works without NVIDIA DALI
 
 ## Installation
 
+To run inside the lightning-pose conda envioronment on the cluster:
+
+```bash
+module load anaconda/3-2023.09
+conda activate lightning-pose
+
+# Ensure the env's bin has priority
+export PATH="$CONDA_PREFIX/bin:$PATH"
+export PYTHONNOUSERSITE=1
+hash -r
+
 pip install -e .
+```
 
 ## Comamnd-line Interface
 
