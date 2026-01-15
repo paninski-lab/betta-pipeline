@@ -68,7 +68,7 @@ def main():
     # -------------------------------------------------
     # Dispatch
     # -------------------------------------------------
-    if args.command == "pose_predict":
+    if args.command == "train":
         lp_predict(
             video_folder=args.video_folder,
             output_folder=args.output_folder,
@@ -90,3 +90,6 @@ def main():
             )
 
         feature_generation(files, args.output)
+
+    else:
+        raise RuntimeError(f"Unknown command: {args.command}")

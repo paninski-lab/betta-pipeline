@@ -14,3 +14,7 @@ Week 14/hyperparameter_sweep/binary_data/
 **/*.pyc
 
 
+
+__pycache__/
+*.pyc
+*.egg-info/
