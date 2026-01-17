@@ -38,7 +38,7 @@ betta
 > Running on a CPU-only node will fail when loading the checkpoint.
 
 ```bash
-betta train
+betta pose_predict
 ```
 
 **Input**
@@ -51,12 +51,12 @@ Directory containing pose prediction CSV files
 
 **Command** 
 ```bash
-betta train --video-folder <VIDEO_FOLDER> --output-folder <OUTPUT_FOLDER> --cfg-file <CONFIG_YAML> --ckpt-file <CHECKPOINT_CKPT>
+betta pose-predict --video-folder <VIDEO_FOLDER> --output-folder <OUTPUT_FOLDER> --cfg-file <CONFIG_YAML> --ckpt-file <CHECKPOINT_CKPT>
 ```
 
 **Example**
 ```bash
-betta train --video-folder ./videos --output-folder ./pose_outputs --cfg-file ./configs/betta.yaml --ckpt-file ./checkpoints/betta.ckpt
+betta pose-predict --video-folder ./videos --output-folder ./pose_outputs --cfg-file ./configs/betta.yaml --ckpt-file ./checkpoints/betta.ckpt
 ```
 
 ## To run feature generation

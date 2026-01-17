@@ -18,28 +18,28 @@ def main():
     )
 
     # -------------------------------------------------
-    # train subcommand
+    # predict subcommand
     # -------------------------------------------------
-    train_parser = subparsers.add_parser(
-        "train",
+    predict_parser = subparsers.add_parser(
+        "pose-predict",
         help="Run Lightning Pose inference on videos",
     )
-    train_parser.add_argument(
+    predict_parser.add_argument(
         "--video-folder",
         required=True,
         help="Directory containing input .mp4 videos",
     )
-    train_parser.add_argument(
+    predict_parser.add_argument(
         "--output-folder",
         required=True,
         help="Directory to save prediction CSV files",
     )
-    train_parser.add_argument(
+    predict_parser.add_argument(
         "--cfg-file",
         required=True,
         help="Path to Lightning Pose config YAML",
     )
-    train_parser.add_argument(
+    predict_parser.add_argument(
         "--ckpt-file",
         required=True,
         help="Path to Lightning Pose checkpoint (.ckpt)",
@@ -68,7 +68,7 @@ def main():
     # -------------------------------------------------
     # Dispatch
     # -------------------------------------------------
-    if args.command == "train":
+    if args.command == "pose-predict":
         lp_predict(
             video_folder=args.video_folder,
             output_folder=args.output_folder,
@@ -93,3 +93,4 @@ def main():
 
     else:
         raise RuntimeError(f"Unknown command: {args.command}")
+
