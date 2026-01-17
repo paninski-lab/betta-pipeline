@@ -38,7 +38,7 @@ betta
 > Running on a CPU-only node will fail when loading the checkpoint.
 
 ```bash
-betta pose_predict
+betta pose-predict
 ```
 
 **Input**
