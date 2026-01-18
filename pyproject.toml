@@ -40,3 +40,7 @@ dependencies = [
 
 [project.scripts]
 betta = "real_fish_preprocess.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["real_fish_preprocess*"]
+#exclude = ["real_fish*", "robot_fish*"]
