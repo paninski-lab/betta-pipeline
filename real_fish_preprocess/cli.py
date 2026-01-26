@@ -24,9 +24,14 @@ def main():
         "pose-predict",
         help="Run Lightning Pose inference on videos",
     )
+
+    predict_parser.add_argument(
+        "--video",
+        help="Path to a single input .mp4 video",
+    )
+
     predict_parser.add_argument(
         "--video-folder",
-        required=True,
         help="Directory containing input .mp4 videos",
     )
     predict_parser.add_argument(
@@ -69,7 +74,11 @@ def main():
     # Dispatch
     # -------------------------------------------------
     if args.command == "pose-predict":
-        lp_predict(
+       if bool(args.video) == bool(args.video_folder):
+            raise RuntimeError("Provide exactly one of --video or --video-folder")
+
+       lp_predict(
+            video=args.video,
             video_folder=args.video_folder,
             output_folder=args.output_folder,
             cfg_file=args.cfg_file,

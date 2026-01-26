@@ -1,4 +1,4 @@
-def lp_predict(video_folder, output_folder, cfg_file, ckpt_file):
+def lp_predict(*, video=None,video_folder=None, output_folder=None, cfg_file=None, ckpt_file=None):
     import torch
     import omegaconf
     from omegaconf import dictconfig
@@ -23,14 +23,23 @@ def lp_predict(video_folder, output_folder, cfg_file, ckpt_file):
     from pathlib import Path
     from lightning_pose.utils.predictions import predict_single_video
 
-    video_folder = Path(video_folder)
     output_folder = Path(output_folder)
     output_folder.mkdir(parents=True, exist_ok=True)
 
-    video_paths = sorted(video_folder.glob("*.mp4"))
+    if video is not None:
+        vid_path = Path(video)
+        if not vid_path.exists():
+            raise RuntimeError(f"Video not found: {vid_path}")
+        if vid_path.suffix.lower() != ".mp4":
+            raise RuntimeError(f"Expected an .mp4 file, got: {vid_path}")
+        video_paths = [vid_path]
 
-    if not video_paths:
-        raise RuntimeError(f"No .mp4 files found in {video_folder}")
+    else:
+        video_folder = Path(video_folder)
+        video_paths = sorted(video_folder.glob("*.mp4"))
+
+        if not video_paths:
+            raise RuntimeError(f"No .mp4 files found in {video_folder}")
 
     for vid_path in video_paths:
         base = vid_path.stem
